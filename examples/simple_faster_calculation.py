@@ -6,7 +6,7 @@ import numpy as np
 
 from lazynumpy.larray import lndarray
 
-# pylint: disable=missing-docstring,invalid-name,unexpected-keyword-arg
+# pylint: disable=missing-docstring,invalid-name,unexpected-keyword-arg,line-too-long
 def timeit(method):
     """ https://medium.com/pythonhive/python-decorator-to-measure-the-execution-time-of-methods-fa04cb6bb36d """
     def timed(*args, **kw):
@@ -56,7 +56,7 @@ def main():
     run_without_lndarray_but_with_knowledge([A, B, C], logtime_data=logtime_data)
     run_with_lndarray([A, B, C], logtime_data=logtime_data)
     print(logtime_data)
-# pylint: enable=missing-docstring,invalid-name,unexpected-keyword-arg
+# pylint: enable=missing-docstring,invalid-name,unexpected-keyword-arg,line-too-long
 
 
 if __name__ == '__main__':
