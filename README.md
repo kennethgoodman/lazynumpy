@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/kennethgoodman/lazy_numpy.svg?branch=master)](https://travis-ci.org/kennethgoodman/lazy_numpy)
+
 # lazy_numpy
 a lazy evaluated wrapper around numpy
 
