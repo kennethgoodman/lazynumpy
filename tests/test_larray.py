@@ -4,6 +4,7 @@ import numpy as np
 
 from lazynumpy.larray import lndarray
 
+
 # pylint: disable=no-member
 def assert_array_equal(actual, expected):
     """
@@ -26,6 +27,7 @@ def test_two_matrices():
     assert C_actual.shape == C_expected.shape
     assert_array_equal(C_actual, C_expected)
 # pylint: enable=assignment-from-no-return, too-many-function-args
+
 
 def test_three_matrices():
     A = lndarray(np.random.random((3, 1)))  # 3 x 1
