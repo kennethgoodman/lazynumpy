@@ -11,4 +11,4 @@ before_script:
 script:
   - pytest --cov=./
 after_success:
-  - codecov
+  - curl -s https://codecov.io/bash | bash
