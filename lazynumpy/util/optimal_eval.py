@@ -1,6 +1,11 @@
 from collections import namedtuple
 import random
 
+def get_list_default(alist, index, default):
+	try:
+		return alist[index]
+	except IndexError:
+		return default
 
 def compute_cost(*args):
 	if len(args) == 1:
@@ -15,7 +20,7 @@ def compute_cost(*args):
 	if hasattr(A, 'width'):
 		return A.width * B.height * C.height
 	else:
-		return A.shape[0] * B.shape[1] * C.shape[1]
+		return get_list_default(A.shape, 0, 1) * get_list_default(B.shape, 1, 1) * get_list_default(C.shape, 1, 1)
 
 
 def Cost(matrices, backtrack=False):
@@ -28,6 +33,7 @@ def Cost(matrices, backtrack=False):
 		for i in range(len(matrices) - s):
 			j = i + s
 			for l in range(i, j):
+				print(i,l,j, matrices)
 				cost = compute_cost(matrices[i], matrices[l], matrices[j]) 
 				cur = cost + S.get((i,l),float('inf')) + S.get((l+1, j),float('inf'))
 				if cur < S.get((i,j),float('inf')):
