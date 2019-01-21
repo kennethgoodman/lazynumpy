@@ -7,7 +7,7 @@ python:
   - "3.7-dev"  # 3.7 development branch
 # command to install dependencies
 install:
-  - pip install -e . --use-mirrors
+  - pip install -r . --use-mirrors
 # command to run tests
 before_script:
   - pip install -r test_requirements.txt --use-mirrors
