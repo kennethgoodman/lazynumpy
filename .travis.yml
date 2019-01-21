@@ -10,7 +10,7 @@ before_script:
   - pip install pytest pytest-cov
   - pip install pyline pytest-pylint
 script:
-  - pytest --pylint -m pylint
+  - pytest --pylint -m pylint --ignore=docs/
   - pytest --cov=./
 after_success:
   - curl -s https://codecov.io/bash | bash
