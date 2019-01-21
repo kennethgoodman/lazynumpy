@@ -1,6 +1,6 @@
 
 [![Build Status](https://travis-ci.org/kennethgoodman/lazy_numpy.svg?branch=master)](https://travis-ci.org/kennethgoodman/lazy_numpy)
-[![Coverage Status](https://coveralls.io/repos/github/kennethgoodman/lazy_numpy/badge.svg?branch=master)](https://coveralls.io/github/kennethgoodman/lazy_numpy?branch=master)
+[![codecov](https://codecov.io/gh/TechnionYP5777/lazy_numpy/branch/master/graph/badge.svg)](https://codecov.io/gh/TechnionYP5777/lazy_numpy)
 
 # lazy_numpy
 a lazy evaluated wrapper around numpy
