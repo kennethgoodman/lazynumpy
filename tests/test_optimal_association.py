@@ -1,4 +1,7 @@
+import random
 from collections import namedtuple
+import string
+
 import pytest
 
 from lazynumpy.util import optimal_eval 
@@ -42,8 +45,22 @@ def test_reduce_tree(Matrix):
 	reduced = optimal_eval.reduce_tree(ordered, reduce_f)
 	assert reduced.shape == (3,5) and reduced.name == '(A * (B * C))'
 
+def test_always_minimized(Matrix):
+	def get_new_matrix(last, name):
+		return Matrix(shape=(last.shape[1], random.randint(1, 25)), name=name)
 
-if __name__ == '__main__':
-	print(test_cost())
-	print(test_cost_backtracking())
-	print(test_reduce_tree())
+	for seed in range(3):
+		random.seed(1)
+		for number_of_matrices in [2, 3, 10, 25]:
+			matrices = [Matrix(shape=(random.randint(1, 25), random.randint(1, 25)), name='A')]
+			for name in string.ascii_uppercase[1:]:
+				if len(matrices) >= number_of_matrices:
+					break
+				matrices.append(get_new_matrix(matrices[-1], name))
+			minimized = optimal_eval.Cost(matrices)
+			regular = 0
+			last = matrices[0]
+			for m in matrices[1:]:
+				regular += optimal_eval.compute_cost(last, m)
+				last = Matrix(shape=(last.shape[0], m.shape[1]), name='({} * {})'.format(last.name, m.name))
+			assert minimized <= regular
