@@ -1,21 +1,23 @@
+""" Example script to show speedup """
+
 import time
 
 import numpy as np
 
 from lazynumpy.larray import lndarray
 
-
+# pylint: disable=missing-docstring,invalid-name,unexpected-keyword-arg
 def timeit(method):
     """ https://medium.com/pythonhive/python-decorator-to-measure-the-execution-time-of-methods-fa04cb6bb36d """
     def timed(*args, **kw):
-        ts = time.time()
+        time_start = time.time()
         result = method(*args)
-        te = time.time()
+        time_start = time.time()
         if 'log_time' in kw:
             name = kw.get('log_name', method.__name__.upper())
-            kw['log_time'][name] = int((te - ts) * 1000)
+            kw['log_time'][name] = int((time_start - time_start) * 1000)
         else:
-            print('%r  %2.2f ms' % (method.__name__, (te - ts) * 1000))
+            print('%r  %2.2f ms' % (method.__name__, (time_start - time_start) * 1000))
         return result
     return timed
 
@@ -54,6 +56,7 @@ def main():
     run_without_lndarray_but_with_knowledge([A, B, C], logtime_data=logtime_data)
     run_with_lndarray([A, B, C], logtime_data=logtime_data)
     print(logtime_data)
+# pylint: enable=missing-docstring,invalid-name,unexpected-keyword-arg
 
 
 if __name__ == '__main__':
