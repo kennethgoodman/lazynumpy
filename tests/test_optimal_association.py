@@ -11,7 +11,7 @@ from lazynumpy.util import optimal_eval
 def Matrix():
 	return namedtuple('Matrix', ['shape', 'name'])
 
-
+#pylint: disable=invalid-name
 def test_cost(Matrix):
 	A = Matrix(shape=(3,1), name='A')
 	B = Matrix(shape=(1,3), name='B')
@@ -50,7 +50,7 @@ def test_always_minimized(Matrix):
 		return Matrix(shape=(last.shape[1], random.randint(1, 25)), name=name)
 
 	for seed in range(3):
-		random.seed(1)
+		random.seed(seed)
 		for number_of_matrices in [2, 3, 10, 25]:
 			matrices = [Matrix(shape=(random.randint(1, 25), random.randint(1, 25)), name='A')]
 			for name in string.ascii_uppercase[1:]:
@@ -64,3 +64,4 @@ def test_always_minimized(Matrix):
 				regular += optimal_eval.compute_cost(last, m)
 				last = Matrix(shape=(last.shape[0], m.shape[1]), name='({} * {})'.format(last.name, m.name))
 			assert minimized <= regular
+#pylint: enable=invalid-name

@@ -1,5 +1,6 @@
 from collections import namedtuple
 import random
+from functools import reduce
 
 def get_list_default(alist, index, default):
 	try:
@@ -33,7 +34,6 @@ def Cost(matrices, backtrack=False):
 		for i in range(len(matrices) - s):
 			j = i + s
 			for l in range(i, j):
-				print(i,l,j, matrices)
 				cost = compute_cost(matrices[i], matrices[l], matrices[j]) 
 				cur = cost + S.get((i,l),float('inf')) + S.get((l+1, j),float('inf'))
 				if cur < S.get((i,j),float('inf')):
@@ -54,20 +54,10 @@ def Cost(matrices, backtrack=False):
 		return S[(0, len(matrices) - 1)]
 
 def reduce_tree(el, mul_f):
-	print(el)
 	if isinstance(el, list) and not isinstance(el[0], list):
-		last = el[0]
-		for m in el[1:]:
-			print('multiplying {} and {}'.format(last, m))
-			last = mul_f(last, m)
-			print('returned', last)
-		return last 
+		return reduce(mul_f, el)
 	elif isinstance(el, list) and len(el) == 2:
 		left = reduce_tree(el[0], mul_f)
 		right = reduce_tree(el[1], mul_f)
-		print('multiplying {} and {}'.format(left, right))
 		a = mul_f(left, right)
-		print('returned', a)
 		return a
-	else:
-		return el
