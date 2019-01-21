@@ -3,3 +3,4 @@ __pycache__/
 .codecovtoken
 .coverage
 coverage.xml
+.idea/
