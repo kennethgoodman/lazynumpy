@@ -29,3 +29,7 @@ or
 [2] will take `1 * 1000 * 1000` operations to calculate `B * C` plus `1000 * 1 * 1000` operations to calculate `A * (B * C)`. The total sum to calculate `A * B * C` is equal to `1000^2 + 1000^2` which means the optimal multiplication order will be ~500 faster.
 
 If you run [the simple example](https://github.com/kennethgoodman/lazynumpy/blob/master/examples/simple_faster_calculation.py) you should see a significant speed up. On my computer there is a 50x speedup with only three matrix calculations.
+
+# Installation
+
+`pip install lazynumpy`
