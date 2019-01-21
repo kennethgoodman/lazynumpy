@@ -1,1 +1,2 @@
-name='lazynumpy'
+""" __init__ for package code """
+name = 'lazynumpy'
