@@ -1,3 +1,5 @@
 *.pyc
 __pycache__/
 .codecovtoken
+.coverage
+coverage.xml
